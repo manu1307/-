@@ -1,0 +1,27 @@
+nav {
+  background-color: rgb(102, 102, 102);
+  height: 10vh;
+  text-align: center;
+  line-height: 10vh;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+nav .company-name {
+  position: relative;
+  left: -40%;
+  padding: 0 10px;
+}
+
+@media (min-width: 769px) and (max-width: 1280px) {
+  nav .company-name {
+    text-align: center;
+    left: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  nav .company-name {
+    text-align: center;
+    left: 0;
+  }
+}
