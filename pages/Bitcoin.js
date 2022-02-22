@@ -1,21 +1,41 @@
-import styles from "../styles/Bitcoin.module.css";
 import Map from "../components/Map.js";
 import Price from "../components/Price.js";
-import { useState } from "react";
-import Image from "next/image";
+import { useEffect, useState } from "react";
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
 
 export default function Bitcoin() {
   const [pictures, setPictures] = useState([]);
+  const [items, setItems] = useState([]);
   const pictureData = () => {
-    fetch(`https://picsum.photos/v2/list`)
-      .then((response) => {
-        return response.json();
+    let finals = [];
+    const count = 8; // Considering 5 numbers
+    const max = 30;
+    for (let i = 0; i < max; i++) {
+      const rand = Math.round(1000 + Math.random() * max);
+      !finals.includes(rand) && finals.push(rand);
+    }
+    setPictures(finals.slice(0, count));
+
+    setItems(
+      pictures.map((id) => {
+        return (
+          <img
+            key={id.index}
+            src={`https://picsum.photos/id/${id}/300/200`}
+            onDragStart={handleDragStart}
+            role="presentation"
+          />
+        );
       })
-      .then((picture) => {
-        setPictures(picture.slice(0, 6));
-      });
+    );
   };
-  pictureData();
+  useEffect(() => {
+    pictureData();
+  }, []);
+
+  const handleDragStart = (e) => e.preventDefault();
+
   return (
     <div className="board">
       <div className="board-top">
@@ -24,17 +44,7 @@ export default function Bitcoin() {
       </div>
       <div className="board-bottom">
         <h1>Board Name</h1>
-        <div className="carousel">
-          {pictures.map((picture, index) => {
-            return (
-              <img
-                key={index}
-                src={`https://picsum.photos/id/${picture.id}/300/200`}
-                alt={`image`}
-              />
-            );
-          })}
-        </div>
+        <AliceCarousel mouseTracking items={items} />
       </div>
 
       <style jsx>
@@ -53,7 +63,8 @@ export default function Bitcoin() {
           }
           img:hover {
             transform: scale(1.2);
-            transition: transform 0.3s;
+            transition: transform 0.5s;
+            transition-delay: 0.2s;
           }
         `}
       </style>
