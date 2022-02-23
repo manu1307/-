@@ -1,41 +1,24 @@
 import Map from "../components/Map.js";
 import Price from "../components/Price.js";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
 export default function Bitcoin() {
-  const [pictures, setPictures] = useState([]);
-  const [items, setItems] = useState([]);
-  const pictureData = () => {
-    let finals = [];
-    const count = 8; // Considering 5 numbers
-    const max = 30;
-    for (let i = 0; i < max; i++) {
-      const rand = Math.round(1000 + Math.random() * max);
-      !finals.includes(rand) && finals.push(rand);
-    }
-    setPictures(finals.slice(0, count));
+  const numbers = [1, 2, 3, 4, 5, 6];
+  const [imageClass, setImageClass] = useState();
+  const [mouseOver, setMouseOver] = useState(false);
 
-    setItems(
-      pictures.map((id) => {
-        return (
-          <img
-            key={id.index}
-            src={`https://picsum.photos/id/${id}/300/200`}
-            onDragStart={handleDragStart}
-            role="presentation"
-          />
-        );
-      })
-    );
+  const handleMouseOver = (e) => {
+    setImageClass(e.target.className);
+    setMouseOver(!mouseOver);
+    e.target.className = `${imageClass} ${mouseOver}`;
   };
-  useEffect(() => {
-    pictureData();
-  }, []);
-
-  const handleDragStart = (e) => e.preventDefault();
-
+  const handleMouseOut = (e) => {
+    setMouseOver(!mouseOver);
+    e.target.className = `${imageClass}`;
+  };
   return (
     <div className="board">
       <div className="board-top">
@@ -44,7 +27,25 @@ export default function Bitcoin() {
       </div>
       <div className="board-bottom">
         <h1>Board Name</h1>
-        <AliceCarousel mouseTracking items={items} />
+        <div className="container">
+          {numbers.map((imageNumber) => {
+            return (
+              <div
+                className="slideImages"
+                key={imageNumber}
+                onMouseOver={handleMouseOver}
+                onMouseLeave={handleMouseOut}
+              >
+                <Image
+                  src={`/image/${imageNumber}.jpg`}
+                  alt="Random Picture"
+                  width={500}
+                  height={300}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       <style jsx>
@@ -61,7 +62,13 @@ export default function Bitcoin() {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(25%, auto));
           }
-          img:hover {
+          .container {
+            display: flex;
+          }
+          .slideImages {
+            cursor: pointer;
+          }
+          .slideImages:hover {
             transform: scale(1.2);
             transition: transform 0.5s;
             transition-delay: 0.2s;
