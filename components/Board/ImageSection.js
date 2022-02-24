@@ -5,11 +5,15 @@ export default function ImageSection({ imageNumber }) {
   const [mouseOver, setMouseOver] = useState(false);
   const [hiddenClass, setHiddenClass] = useState("hidden");
   const handleMouseOver = (e) => {
-    setMouseOver(!mouseOver);
+    setMouseOver(true);
     hiddenNameAdd(null, 200);
+    setTimeout(() => {
+      if (mouseOver) {
+      }
+    }, 150);
   };
   const handleMouseOut = (e) => {
-    setMouseOver(!mouseOver);
+    setMouseOver(false);
     hiddenNameAdd("hidden", 10);
   };
   const hiddenNameAdd = (hiddenName, time) => {
@@ -53,6 +57,8 @@ export default function ImageSection({ imageNumber }) {
             transform: translatey(10%) scale(1.2);
             transition: transform 0.3s;
             transition-delay: 0.2s;
+            // position: relative;
+            // top: -50px;
           }
           .mouseOver {
             background-color: #e3e3e3;
