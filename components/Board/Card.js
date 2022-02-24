@@ -8,7 +8,7 @@ export default function Card({ id }) {
   const [randomNum, setrandomNum] = useState(Math.round(Math.random() * 10));
   const onClick = () => {
     setrandomNum(() => {
-      return randomNum;
+      return randomNum + 1;
     });
   };
   return (
