@@ -103,7 +103,7 @@ export default function Card({ id }) {
           .card-bottom span {
             font-weight: 600;
           }
-          @media (min-width: 769px) and (max-width: 1280px) {
+          @media (min-width: 769px) and (max-width: 1280px) d
             .card-wrapper {
               width: 40%;
             }
