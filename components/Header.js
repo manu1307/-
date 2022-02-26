@@ -9,6 +9,9 @@ export default function Header() {
           <Link href="/">
             <a>Company Name</a>
           </Link>
+          <Link className="login" href="/Login">
+            <a>log in</a>
+          </Link>
         </div>
       </nav>
       <style jsx>
@@ -17,26 +20,28 @@ export default function Header() {
             background-color: rgb(102, 102, 102);
             height: 10vh;
             text-align: left;
-
             line-height: 10vh;
             color: #fff;
             font-weight: bolder;
             font-size: 2rem;
           }
+          nav div {
+            display: flex;
+            justify-content: space-between;
+          }
           a {
-            margin-left: 30px;
+            margin: 0 50px;
+          }
+          .login {
+            font-size: 1rem;
           }
 
-          @media (min-width: 769px) and (max-width: 1280px) {
-            nav .company-name {
-              text-align: center;
-              left: 0;
+          @media (max-width: 1280px) {
+            .company-name {
+              font-size: 1rem;
             }
-          }
-          @media screen and (max-width: 768px) {
-            nav .company-name {
-              text-align: center;
-              left: 0;
+            a {
+              margin: 0 15px;
             }
           }
         `}

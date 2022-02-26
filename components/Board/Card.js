@@ -20,10 +20,13 @@ export default function Card({ id }) {
         <div>
           <Link href={`/Bitcoin/${id}`} passHref>
             <p>
-              first three line first three linefirst three linefirst three line
-              first three line first three linefirst three linefirst three line
-              first three line first three linefirst three linefirst three line
-              first three line first three linefirst three linefirst three line
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+              commodo ligula eget dolor. Aenean massa. Cum sociis natoque
+              penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+              Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
+              sem. Nulla consequat massa quis enim. Donec pede justo, fringilla
+              vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,
+              imperdiet a, venenatis vitae, jus
             </p>
           </Link>
           <div className="date-comments">
@@ -74,7 +77,7 @@ export default function Card({ id }) {
             padding: 0.2rem 0.8rem;
             word-break: break-word;
             overflow-wrap: break-word;
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 1.5;
             height: 4.5rem;
             display: -webkit-box;
@@ -99,6 +102,16 @@ export default function Card({ id }) {
           }
           .card-bottom span {
             font-weight: 600;
+          }
+          @media (min-width: 769px) and (max-width: 1280px) {
+            .card-wrapper {
+              width: 40%;
+            }
+          }
+          @media screen and (max-width: 768px) {
+            .card-wrapper {
+              width: 100%;
+            }
           }
         `}
       </style>

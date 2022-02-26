@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Card from "../components/Board/Card";
 import ImageSection from "../components/Board/ImageSection";
 
@@ -6,7 +7,7 @@ export default function Bitcoin() {
   //   method: "GET",
   //   headers: {
   //     "x-rapidapi-host": "yh-finance.p.rapidapi.com",
-  //     "x-rapidapi-key": "a822f67825mshc6796f51d76222fp17eb0cjsn89f6db84fa78",
+  //     "x-rapidapi-key": {process.env.X-RAPIDAPI-KEY},
   //   },
   // })
   //   .then((response) => {
@@ -15,6 +16,16 @@ export default function Bitcoin() {
   //   .catch((err) => {
   //     console.error(err);
   //   });
+
+  const [windowSize, setWindowSize] = useState(null);
+  useEffect(() => {
+    setWindowSize(window.innerWidth);
+    const handleResize = () => {
+      setWindowSize(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+  }, []);
+  console.log(windowSize);
   const imageNum = [1, 2, 3];
   const cardNum = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -50,11 +61,13 @@ export default function Bitcoin() {
           }
           .board-top {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-around;
-            margin: 3rem 0;
+            margin: 1rem 0;
           }
           .board-top div {
-            width: 30%;
+            margin-top: 2rem;
+            width: 400px;
             height: 250px;
             background-color: yellow;
           }
@@ -68,10 +81,15 @@ export default function Bitcoin() {
           .board-card {
             display: flex;
             flex-wrap: wrap;
+            justify-content: space-around;
           }
           @media (max-width: 1280px) {
             .wrapper {
               width: 90%;
+            }
+            .board-top div {
+              width: 300px;
+              height: 200px;
             }
           }
         `}

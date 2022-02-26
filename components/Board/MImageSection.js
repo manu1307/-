@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function ImageSection({ imageNumber }) {
+export default function MImageSecion() {
   const [mouseOver, setMouseOver] = useState(false);
   const [hiddenClass, setHiddenClass] = useState("hidden");
   const handleMouseOver = (e) => {
@@ -67,12 +67,6 @@ export default function ImageSection({ imageNumber }) {
           }
           .small-wrapper {
             padding: 5%;
-          }
-          @media (max-width: 1280px) {
-            .slideImages:hover {
-              transform: none;
-              transition: transform 0s;
-            }
           }
         `}
       </style>
