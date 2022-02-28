@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Board/Card";
-import ImageSection from "../components/Board/ImageSection";
+import ImageAccordian from "../components/Board/Accordian/ImageAccordian";
 
 export default function Bitcoin() {
   // fetch("https://yh-finance.p.rapidapi.com/market/v2/get-summary?region=US", {
@@ -26,8 +26,8 @@ export default function Bitcoin() {
     window.addEventListener("resize", handleResize);
   }, []);
   console.log(windowSize);
-  const imageNum = [1, 2, 3];
-  const cardNum = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  const cardNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   return (
     <div className="wrapper">
@@ -38,9 +38,7 @@ export default function Bitcoin() {
       <div className="board-middle">
         <h2>Trending Board</h2>
         <div className="container">
-          {imageNum.map((num) => {
-            return <ImageSection key={num} imageNumber={num} />;
-          })}
+          <ImageAccordian />
         </div>
       </div>
       <div className="board-bottom">
@@ -71,12 +69,11 @@ export default function Bitcoin() {
             height: 250px;
             background-color: yellow;
           }
+          .container {
+            height: 400px;
+          }
           h2 {
             padding: 0.2rem 0.8rem;
-          }
-          .container {
-            display: flex;
-            flex-wrap: wrap;
           }
           .board-card {
             display: flex;
