@@ -66,21 +66,20 @@ export default function Bitcoin() {
           .board-top {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
-            margin: 3rem 0;
+            justify-content: space-between;
+            margin: 3rem 2.4rem;
           }
           .board-top .map {
-            width: 500px;
+            width: 600px;
             height: 300px;
             background: url("image/StockBoard.jpg") no-repeat;
             background-size: cover;
-            border-radius: 10px;
+            border-radius: 4px;
           }
           .board-top .index {
-            width: 500px;
+            width: 550px;
             height: 300px;
             border-radius: 10px;
-
             display: flex;
             flex-direction: column;
             justify-content: space-between;
