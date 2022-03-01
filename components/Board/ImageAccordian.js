@@ -1,7 +1,7 @@
 import { text } from "@fortawesome/fontawesome-svg-core";
 import { useState } from "react";
 import Link from "next/link";
-import Bitcoin from "../../../pages/Bitcoin";
+import Bitcoin from "../../pages/Bitcoin";
 
 export default function ImageAccordian() {
   const textPackage = [
@@ -16,7 +16,12 @@ export default function ImageAccordian() {
       <ul>
         {textPackage.map((text, index) => {
           return (
-            <Link key={index} href={`/Bitcoin/${index}`} passHref>
+            <Link
+              key={index}
+              href={`/ExamplePage`}
+              //  href={`/Bitcoin/${index}`}
+              passHref
+            >
               <li>
                 <h3>{text}</h3>
               </li>

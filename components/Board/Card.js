@@ -5,7 +5,9 @@ import { useState } from "react";
 
 export default function Card({ id }) {
   const date = new Date().toLocaleString("ko-KR").slice(0, 12);
-  const [randomNum, setrandomNum] = useState(Math.round(Math.random() * 10));
+  const [randomNum, setrandomNum] = useState(
+    Math.round(Math.random() * 90 + 10)
+  );
   const onClick = () => {
     setrandomNum(() => {
       return randomNum + 1;

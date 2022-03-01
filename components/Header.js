@@ -1,7 +1,11 @@
 import Link from "next/link";
-// import styles from "../styles/Header.module.css";
+import { useState } from "react";
 
 export default function Header() {
+  const [isLogin, setIsLogin] = useState(false);
+  const handleOnClick = () => {
+    setIsLogin(!isLogin);
+  };
   return (
     <div>
       <nav className="company-name">
@@ -9,8 +13,8 @@ export default function Header() {
           <Link href="/">
             <a>Company Name</a>
           </Link>
-          <Link className="login" href="/Login">
-            <a>log in</a>
+          <Link className="login" href="/">
+            <a onClick={handleOnClick}>{isLogin ? "Log Out" : "Log in"}</a>
           </Link>
         </div>
       </nav>

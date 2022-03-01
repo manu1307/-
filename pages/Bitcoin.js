@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Board/Card";
-import ImageAccordian from "../components/Board/Accordian/ImageAccordian";
+import ImageAccordian from "../components/Board/ImageAccordian";
+import Tab from "../components/Board/Tab";
 
 export default function Bitcoin() {
   // fetch("https://yh-finance.p.rapidapi.com/market/v2/get-summary?region=US", {
@@ -28,12 +29,17 @@ export default function Bitcoin() {
   console.log(windowSize);
 
   const cardNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const KoreaIndexes = [{ id: "KOSPI" }, { id: "KOSDAQ" }];
+  const USIndexes = [{ id: "S&P500" }, { id: "Nasdaq" }, { id: "Dow Jones" }];
 
   return (
     <div className="wrapper">
       <div className="board-top">
-        <div>Coin Map</div>
-        <div>current Market</div>
+        <div className="map"></div>
+        <div className="index">
+          <Tab stockIndexes={KoreaIndexes}></Tab>
+          <Tab stockIndexes={USIndexes}></Tab>
+        </div>
       </div>
       <div className="board-middle">
         <h2>Trending Board</h2>
@@ -61,13 +67,23 @@ export default function Bitcoin() {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
-            margin: 1rem 0;
+            margin: 3rem 0;
           }
-          .board-top div {
-            margin-top: 2rem;
-            width: 400px;
-            height: 250px;
-            background-color: yellow;
+          .board-top .map {
+            width: 500px;
+            height: 300px;
+            background: url("image/StockBoard.jpg") no-repeat;
+            background-size: cover;
+            border-radius: 10px;
+          }
+          .board-top .index {
+            width: 500px;
+            height: 300px;
+            border-radius: 10px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
           }
           .container {
             height: 400px;
@@ -87,6 +103,14 @@ export default function Bitcoin() {
             .board-top div {
               width: 300px;
               height: 200px;
+            }
+            .board-top .map {
+              margin-bottom: 20px;
+            }
+          }
+          @media (max-width: 768px) {
+            .board-middle {
+              display: none;
             }
           }
         `}
