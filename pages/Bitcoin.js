@@ -42,7 +42,7 @@ export default function Bitcoin() {
         </div>
       </div>
       <div className="board-middle">
-        <h2>Trending Board</h2>
+        <h2>Trend Column</h2>
         <div className="container">
           <ImageAccordian />
         </div>
@@ -67,7 +67,7 @@ export default function Bitcoin() {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            margin: 3rem 2.4rem;
+            margin: 3rem 1.8rem;
           }
           .board-top .map {
             width: 600px;
