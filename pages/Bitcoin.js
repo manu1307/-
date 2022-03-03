@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import Card from "../components/Board/Card";
 import ImageAccordian from "../components/Board/ImageAccordian";
 import Tab from "../components/Board/Tab";
@@ -35,7 +36,9 @@ export default function Bitcoin() {
   return (
     <div className="wrapper">
       <div className="board-top">
-        <div className="map"></div>
+        <Link href={"https://finviz.com/map.ashx"} passHref>
+          <div className="map"></div>
+        </Link>
         <div className="index">
           <Tab stockIndexes={KoreaIndexes}></Tab>
           <Tab stockIndexes={USIndexes}></Tab>
@@ -70,6 +73,7 @@ export default function Bitcoin() {
             margin: 3rem 1.8rem;
           }
           .board-top .map {
+            cursor: pointer;
             width: 600px;
             height: 300px;
             background: url("image/StockBoard.jpg") no-repeat;

@@ -3,26 +3,28 @@ import Link from "next/link";
 import ImageAccordianText from "./ImageAccordianText";
 
 export default function ImageAccordian() {
-  const textPackage = [
-    "Russia-Ukraine war: The companies that have taken action so far",
-    "Stock market news live updates: Stock futures rise as investors eye Russia's war in Ukraine, await Powell",
-    "Boeing suspends parts, maintenance and support for Russian airlines",
-    "American Express halts relationships with Russia bank partners",
+  const titlePackage = [
+    "Jobless claims preview: Another 225,000 Americans likely filed new claims last week",
+    "Stock market news live updates: Stocks rise, oil prices soar as investors eye Russia's war, Powell's testimony",
+    "Stock market news live updates: Stock futures steady after rally",
+    "Stock Market Tries To Steady Itself As Oil Tops $100 Again; These Mining Stocks Rally",
   ];
 
   return (
     <div className="wrap">
       <ul>
-        {textPackage.map((text, index) => {
+        {titlePackage.map((title, index) => {
           return (
             <Link
               key={index}
-              href={`/ExamplePage`}
-              //  href={`/Bitcoin/${index}`}
+              href={{
+                pathname: "/Bitcoin/column/[param]",
+                query: { param: index },
+              }}
               passHref
             >
               <li>
-                <ImageAccordianText className="text" title={text} />
+                <ImageAccordianText className="text" title={title} />
               </li>
             </Link>
           );

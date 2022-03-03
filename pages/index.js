@@ -26,11 +26,22 @@ export default function Home() {
       <style jsx>
         {`
           .wrapper {
-            width: 80%;
+            width: 1280px;
             margin: 100px auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             grid-gap: 30px;
+          }
+          @media (min-width: 769px) and (max-width: 1280px) {
+            .wrapper {
+              width: 90%;
+            }
+          }
+          @media screen and (max-width: 768px) {
+            .wrapper {
+              width: 80%;
+              margin: 30px auto;
+            }
           }
         `}
       </style>
