@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 const ColumnLink = () => {
   const titlePackage = [
@@ -17,26 +19,128 @@ const ColumnLink = () => {
 
   const router = useRouter();
   const { param } = router.query;
+
+  const [comments, setComments] = useState([]);
+  const [currentComment, setCurrentComment] = useState("");
+
+  const saveComment = (event) => {
+    event.preventDefault();
+    setComments((prevComments) => {
+      return [...prevComments, currentComment];
+    });
+    setCurrentComment("");
+  };
+  const writeComment = (event) => {
+    setCurrentComment(event.target.value);
+  };
   return (
     <div className="wrap">
-      <h2>{titlePackage[param]}</h2>
-      <div className="container">
+      <div className="column-top">
+        <h2>{titlePackage[param]}</h2>
+        <Link href={"/Bitcoin"} passHref>
+          <button>X</button>
+        </Link>
+      </div>
+      <div className="column-middle">
         <Image
+          className="X"
           src={`/image/${Number(param) + 1}.jpg`}
           alt="Some Picture"
           width={500}
           height={400}
         />
       </div>
-      <p>{textPackage[param]}</p>
+      <div className="column-bottom">
+        <p>{textPackage[param]}</p>
+      </div>
+      <div className="comment-wrap">
+        <h2>{comments.length} Comments</h2>
+        <form onSubmit={saveComment} className="comment-write">
+          <input
+            name="comment"
+            id="comment"
+            value={currentComment}
+            onChange={writeComment}
+            type="text"
+            placeholder="write a comment"
+          />
+          <button type="submit">Submit</button>
+        </form>
+        <div className="comment-content">
+          <ul>
+            {comments.map((comment, index) => {
+              return <li key={index}>{comment}</li>;
+            })}
+          </ul>
+        </div>
+      </div>
       <style jsx>
         {`
           .wrap {
             width: 1280px;
             margin: 100px auto;
+            height: 100%;
+            padding: 40px 60px;
+            border-radius: 20px;
+            -webkit-box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
           }
-          .container {
+          .column-top {
+            display: flex;
+            justify-content: space-between;
+          }
+          .column-top button {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            left: 80px;
+            bottom: 60px;
+            background-color: white;
+            border-radius: 20px;
+            border: none;
+            -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: lightgrey;
+            font-family: sans-serif;
+            text-align: center;
+          }
+
+          .column-top button:hover {
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+            color: tomato;
+          }
+          .column-middle {
             border-radius: 10px;
+          }
+          .comment-wrap {
+            margin-top: 100px;
+          }
+          .comment-write {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+          }
+          .comment-write input {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border: 0.3px solid lightgrey;
+            -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+            font-size: 1.05rem;
+            padding: 5px 10px;
+            vertical-align: top;
+            text-align: left;
+          }
+          .comment-write input:focus-visible {
+            border: 0.7px solid red;
+          }
+          .comment-write button {
+            width: 200px;
           }
         `}
       </style>
