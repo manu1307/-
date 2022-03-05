@@ -65,7 +65,7 @@ export default function Bitcoin() {
   const USIndexes = [
     { id: "S&P500", name: "S&P 500" },
     { id: "Nasdaq", name: "나스닥" },
-    { id: "Dow Jones", name: "다우존스" },
+    { id: "Dow", name: "다우존스" },
   ];
 
   return (
