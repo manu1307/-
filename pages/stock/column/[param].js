@@ -5,17 +5,20 @@ import { useState } from "react";
 
 const ColumnLink = () => {
   const titlePackage = [
-    "Jobless claims preview: Another 225,000 Americans likely filed new claims last week",
-    "Stock market news live updates: Stocks rise, oil prices soar as investors eye Russia's war, Powell's testimony",
-    "Stock market news live updates: Stock futures steady after rally",
-    "Stock Market Tries To Steady Itself As Oil Tops $100 Again; These Mining Stocks Rally",
+    "금융 '메기' 빅테크…규제 사각지대 이용하면 효율성 떨어져",
+    "거래소, 7일부터 ‘러시아 ETF’ 거래 정지 소식에 개미들 '멘붕'",
+    "차지포인트, 가속화되는 외형 성장세…저점 매수",
+    "블랙록, 아이셰어즈 MSCI 러시아 ETF 중단...주주 이익 보호할 것",
   ];
   const textPackage = [
-    "At 225,000, the expected number of new jobless claims would mark a back-to-back week of declines. Jobless claims rose to nearly 300,000 in mid-January, reflecting some momentary backsliding in the labor market's improvements as Omicron virus cases surged to a record and seasonal adjustments in data became choppy due to the pandemic over the past two years. Still, claims have fallen precipitously compared to this time last year, with new claims coming in around 750,000 in late February 2021.",
-    "Amid the ongoing geopolitical concerns, energy prices climbed, and West Texas intermediate crude oil prices rocketed further above $100 per barrel to top $112 and reach the highest level since 2011. OPEC+ said Wednesday that it would continue to increase output in April by 400,000 barrels per day compared to March, keeping this rate of production increases in-line with recent months' rises despite strained oil supplies.",
-    "Stock futures opened slightly lower Wednesday evening to steady after rallying during the regular trading day. Affirmation from Federal Reserve Chair Jerome Powell that the central bank will take a measured approach to raising interest rates amid geopolitical uncertainty helped to momentarily appease volatile markets. Contracts on the S&P 500 edged lower. The index ended higher by 1.9% Wednesday afternoon to close marginally below 4,400 during the regular trading day. Treasury yields also rebounded as investors slowed a flight to safe havens, and the benchmark 10-year yield hovered just below 1.9%.",
-    "The stock market fell Tuesday morning as the Russian assault on Ukraine caused oil prices to top $100 a barrel again. After weeks of volatile trading, it was almost strange to see the main stock indexes fall only moderately.",
+    "금융업계 ‘메기’로 꼽히는 빅테크 업체들이 규제차익에 기대 성장하면 경쟁력을 상실할 수 있다는 경고가 나왔다. 기존의 대형 금융사처럼 ‘대마불사’와 같은 존재로 전락할 수 있다는 우려다.",
+    "한국거래소는 지난 4일 주식시장 마감 후 “한국투자신탁운용의 ‘KINDEX 러시아MSCI(합성) ETF’의 거래를 오는 7일부터 정지한다”고 공시했다. 거래소는 “투자 유의 종목으로 투자자 보호 및 시장 안정을 위해 매매 거래를 정지한다”며 “매매 거래 정지 해제는 별도의 시장 안내가 있을 예정”이라고 덧붙였다.",
+    "전기차 충전 인프라 업체로 충전설비와 소프트웨어 서비스 통합 플랫폼을 제공하는 차지포인트에 대해 외형 성장을 감안한 분할 매수 전략이 합리적이란 분석이 나온다.",
+    "세계 최대 자산운용사 블랙록이 약 30개의 러시아 관련 주식에 투자하는 1억500만달러 규모의 '아이셰어즈 MSCI 러시아(iShares MSCI Russia) ETF(ERUS)를 중단한다고 4일(현지시간) 밝혔다.",
   ];
+  const date = new Date();
+  const dateString = date.toLocaleDateString("ko-KR");
+  const timeString = date.toLocaleTimeString("ko-KR").slice(2, 50);
 
   const router = useRouter();
   const { param } = router.query;
@@ -25,6 +28,10 @@ const ColumnLink = () => {
 
   const saveComment = (event) => {
     event.preventDefault();
+    if (currentComment.length === 0) {
+      alert("There is nothing on the comment. Please write a comment.");
+      return;
+    }
     setComments((prevComments) => {
       return [...prevComments, currentComment];
     });
@@ -37,7 +44,7 @@ const ColumnLink = () => {
     <div className="wrap">
       <div className="column-top">
         <h2>{titlePackage[param]}</h2>
-        <Link href={"/Bitcoin"} passHref>
+        <Link href={"/stock/Board"} passHref>
           <button>X</button>
         </Link>
       </div>
@@ -62,14 +69,19 @@ const ColumnLink = () => {
             value={currentComment}
             onChange={writeComment}
             type="text"
-            placeholder="write a comment"
+            placeholder="댓글을 작성해주세요."
           />
-          <button type="submit">Submit</button>
+          <button type="submit">댓글 쓰기</button>
         </form>
         <div className="comment-content">
           <ul>
             {comments.map((comment, index) => {
-              return <li key={index}>{comment}</li>;
+              return (
+                <li key={index}>
+                  {comment}
+                  <span>{`${dateString}   ${timeString}`}</span>
+                </li>
+              );
             })}
           </ul>
         </div>
@@ -140,7 +152,37 @@ const ColumnLink = () => {
             border: 0.7px solid red;
           }
           .comment-write button {
-            width: 200px;
+            width: 80px;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            background: #fff;
+            font-size: 0.8rem;
+            -webkit-box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease-in-out;
+          }
+          .comment-write button:hover {
+            cursor: pointer;
+            background: #1e90ff;
+            color: white;
+          }
+          .comment-content ul {
+            margin-left: 0;
+            padding-left: 0;
+          }
+          .comment-content ul li {
+            padding: 20px 7px 10px;
+            list-style: none;
+            border-bottom: 0.2px solid grey;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: space-between;
+          }
+          .comment-content ul li span {
+            font-size: 0.3rem;
+            color: grey;
           }
         `}
       </style>

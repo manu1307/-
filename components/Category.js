@@ -18,7 +18,7 @@ export default function Category({ category, inCategory, icon, iconColor }) {
         {inCategory.map((detail, index) => {
           return (
             <p key={index}>
-              <Link href={`/${detail}`}>{detail}</Link>
+              <Link href={`/${category}/Board`}>{detail}</Link>
             </p>
           );
         })}

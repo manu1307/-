@@ -43,7 +43,7 @@ export default function Tab({ stockIndexes }) {
           }
           .market-index {
             margin-top: 5px;
-            background: url("image/StockIndexes/${index}.jpg") no-repeat;
+            background: url("../image/StockIndexes/${index}.jpg") no-repeat;
             background-size: cover;
             width: 100%;
             height: 95px;

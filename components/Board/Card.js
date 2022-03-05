@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Card({ id }) {
+export default function Card({ title, context, id }) {
   const date = new Date().toLocaleString("ko-KR").slice(0, 12);
   const [randomNum, setrandomNum] = useState(
     Math.round(Math.random() * 90 + 10)
@@ -16,20 +16,24 @@ export default function Card({ id }) {
   return (
     <div className="card-wrapper">
       <div>
-        <Link href={`/Bitcoin/${id}`} passHref>
-          <div className="title">Title</div>
+        <Link
+          href={{
+            pathname: "/stock/Board/[param]",
+            query: { param: id },
+          }}
+          passHref
+        >
+          <div className="title">{title}</div>
         </Link>
         <div>
-          <Link href={`/Bitcoin/${id}`} passHref>
-            <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-              commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-              penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-              Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
-              sem. Nulla consequat massa quis enim. Donec pede justo, fringilla
-              vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,
-              imperdiet a, venenatis vitae, jus
-            </p>
+          <Link
+            href={{
+              pathname: "/stock/Board/[param]",
+              query: { param: id },
+            }}
+            passHref
+          >
+            <p>{context}</p>
           </Link>
           <div className="date-comments">
             <div>{date}</div>
@@ -113,6 +117,7 @@ export default function Card({ id }) {
           @media screen and (max-width: 768px) {
             .card-wrapper {
               width: 100%;
+              height: 250px;
             }
           }
         `}

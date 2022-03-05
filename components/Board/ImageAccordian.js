@@ -4,10 +4,10 @@ import ImageAccordianText from "./ImageAccordianText";
 
 export default function ImageAccordian() {
   const titlePackage = [
-    "Jobless claims preview: Another 225,000 Americans likely filed new claims last week",
-    "Stock market news live updates: Stocks rise, oil prices soar as investors eye Russia's war, Powell's testimony",
-    "Stock market news live updates: Stock futures steady after rally",
-    "Stock Market Tries To Steady Itself As Oil Tops $100 Again; These Mining Stocks Rally",
+    "금융 '메기' 빅테크…규제 사각지대 이용하면 효율성 떨어져",
+    "거래소, 7일부터 ‘러시아 ETF’ 거래 정지 소식에 개미들 '멘붕'",
+    "차지포인트, 가속화되는 외형 성장세…저점 매수",
+    "블랙록, 아이셰어즈 MSCI 러시아 ETF 중단...주주 이익 보호할 것",
   ];
 
   return (
@@ -18,7 +18,7 @@ export default function ImageAccordian() {
             <Link
               key={index}
               href={{
-                pathname: "/Bitcoin/column/[param]",
+                pathname: "/stock/column/[param]",
                 query: { param: index },
               }}
               passHref
@@ -69,19 +69,19 @@ export default function ImageAccordian() {
           }
 
           ul li:nth-child(1) {
-            background: url("image/1.jpg") top center no-repeat;
+            background: url("../image/1.jpg") top center no-repeat;
             background-size: cover;
           }
           ul li:nth-child(2) {
-            background: url("image/2.jpg") top center no-repeat;
+            background: url("../image/2.jpg") top center no-repeat;
             background-size: cover;
           }
           ul li:nth-child(3) {
-            background: url("image/3.jpg") top center no-repeat;
+            background: url("../image/3.jpg") top center no-repeat;
             background-size: cover;
           }
           ul li:nth-child(4) {
-            background: url("image/4.jpg") top center no-repeat;
+            background: url("../image/4.jpg") top center no-repeat;
             background-size: cover;
           }
 
@@ -95,7 +95,7 @@ export default function ImageAccordian() {
             transition: all 0.4s ease-in-out;
           }
 
-          @media (max-width: 1240px) {
+          @media (max-width: 1280px) {
           }
         `}
       </style>
