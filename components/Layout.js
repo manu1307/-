@@ -9,6 +9,11 @@ export default function LayOut({ children }) {
       </Head>
       <Header />
       <main>{children}</main>
+      <style jsx>{`
+        main {
+          text-align: center;
+        }
+      `}</style>
     </>
   );
 }

@@ -39,8 +39,8 @@ export default function Home() {
           }
           @media screen and (max-width: 768px) {
             .wrapper {
-              width: 80%;
-              margin: 30px auto;
+              width: 90%;
+              margin: 30px 5%;
             }
           }
         `}

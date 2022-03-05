@@ -104,6 +104,17 @@ export default function Category({ category, inCategory, icon, iconColor }) {
           transform: translateY(-110px) rotateX(90deg);
           -webkit-transform: translateY(-110px) rotateX(90deg);
         }
+        @media (min-width: 769px) and (max-width: 1280px) {
+          .wrapper {
+            width: 90%;
+          }
+        }
+        @media screen and (max-width: 768px) {
+          .box {
+            margin: 0 auto;
+            width: 90%;
+          }
+        }
       `}</style>
     </div>
   );

@@ -9,13 +9,15 @@ export default function Tab({ stockIndexes }) {
   return (
     <div className="wrapper">
       <div>
-        {stockIndexes.map((stockIndex, index) => {
-          return (
-            <span key={index} onClick={handleOnClick}>
-              {stockIndex.id}
-            </span>
-          );
-        })}
+        <div className="index-wrap">
+          {stockIndexes.map((stockIndex, index) => {
+            return (
+              <span key={index} onClick={handleOnClick}>
+                {stockIndex.id}
+              </span>
+            );
+          })}
+        </div>
         <div className="market-index"></div>
       </div>
       <style jsx>
@@ -47,6 +49,18 @@ export default function Tab({ stockIndexes }) {
             background-size: cover;
             width: 100%;
             height: 95px;
+          }
+          @media (min-width: 769px) and (max-width: 1280px) {
+          }
+          @media screen and (max-width: 768px) {
+            .index-wrap {
+              display: flex;
+              margin: 2.5%;
+            }
+            span {
+              font-size: 0.8rem;
+              margin: 0;
+            }
           }
         `}
       </style>

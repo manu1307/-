@@ -58,8 +58,15 @@ export default function Bitcoin() {
     "포스코, 14조 투자 '100년 철강기업' 다진다",
     "현대모비스, 지난해 첨단 車램프 글로벌 수주 1조원 달성",
   ];
-  const KoreaIndexes = [{ id: "KOSPI" }, { id: "KOSDAQ" }];
-  const USIndexes = [{ id: "S&P500" }, { id: "Nasdaq" }, { id: "Dow Jones" }];
+  const KoreaIndexes = [
+    { id: "KOSPI", name: "코스피" },
+    { id: "KOSDAQ", name: "코스닥" },
+  ];
+  const USIndexes = [
+    { id: "S&P500", name: "S&P 500" },
+    { id: "Nasdaq", name: "나스닥" },
+    { id: "Dow Jones", name: "다우존스" },
+  ];
 
   return (
     <div className="wrapper">
