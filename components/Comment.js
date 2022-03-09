@@ -53,7 +53,7 @@ export default function Comment() {
             type="text"
             placeholder="댓글을 작성해주세요."
           />
-          <button type="submit">댓글 쓰기</button>
+          <button type="submit">write</button>
         </form>
         <div className="comment-content">
           <ul>
@@ -116,7 +116,6 @@ export default function Comment() {
         .comment-write button:hover {
           cursor: pointer;
           background: #1e90ff;
-          color: white;
         }
         .comment-content ul {
           margin-left: 0;

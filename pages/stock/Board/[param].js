@@ -113,7 +113,7 @@ const BoardLink = ({}) => {
               left: 10%;
               bottom: 30px;
               text-align: center;
-              font-size: 0.8rem;
+              font-size: 0.6rem;
             }
             .comment-write button {
               width: 70px;
