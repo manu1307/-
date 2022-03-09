@@ -116,6 +116,7 @@ export default function Comment() {
         .comment-write button:hover {
           cursor: pointer;
           background: #1e90ff;
+          color: white;
         }
         .comment-content ul {
           margin-left: 0;
@@ -138,8 +139,14 @@ export default function Comment() {
         }
         @media screen and (max-width: 768px) {
           .comment-write button {
+            color: black;
             width: 70px;
             height: 35px;
+          }
+          .comment-write button:hover {
+            cursor: pointer;
+            background: none;
+            color: black;
           }
         }
       `}</style>
