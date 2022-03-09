@@ -91,6 +91,7 @@ export default function Card({ title, context, id }) {
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
+            text-align: left;
           }
           .date-comments {
             display: flex;

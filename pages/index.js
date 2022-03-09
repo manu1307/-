@@ -7,7 +7,7 @@ export default function Home() {
     <div className="wrapper">
       <Category
         category={`Cryptocurrency`}
-        inCategory={["Crypto Board", "Coin Tracker"]}
+        inCategory={["Board", "Coin Tracker"]}
         icon={faBitcoin}
         iconColor={"rgb(218, 189, 28)"}
       />

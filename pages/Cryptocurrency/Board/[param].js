@@ -108,12 +108,10 @@ const BoardLink = ({}) => {
             .column-top button {
               width: 30px;
               height: 30px;
-              border-radius: 50%;
               position: relative;
               left: 10%;
               bottom: 30px;
               text-align: center;
-              font-size: 0.8rem;
             }
             .comment-write button {
               width: 70px;
