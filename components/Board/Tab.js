@@ -30,6 +30,9 @@ export default function Tab({ stockIndexes }) {
             -moz-box-shadow: -1px 0px 3px 0px rgba(0, 0, 0, 0.51);
             border-radius: 5px;
           }
+          .index-wrap {
+            text-align: left;
+          }
           span {
             padding: 0 5%;
             border-left: 2px solid rgba(0, 0, 0, 0.3);

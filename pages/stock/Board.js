@@ -131,6 +131,14 @@ export default function Bitcoin() {
             flex-direction: column;
             justify-content: space-between;
           }
+          .board-middle h2 {
+            text-align: left;
+            padding: 0 2rem;
+          }
+          .board-bottom h2 {
+            text-align: left;
+            padding: 0 2rem;
+          }
           .container {
             height: 400px;
           }
